@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_user")
+@Table(name = "TB_USER")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -50,17 +50,17 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == UserRole.ADMIN) return List.of(new SimpleGrantedAuthority("USER_ADMIN"));
-            else return List.of(new SimpleGrantedAuthority("USER_CLIENTE"));
+        if(this.role == UserRole.ADMIN) return List.of(new SimpleGrantedAuthority("ADMIN"));
+            else return List.of(new SimpleGrantedAuthority("USER"));
     }
 
     @Override
     public @Nullable String getPassword() {
-        return "";
+        return senha;
     }
 
     @Override
     public String getUsername() {
-        return "";
+        return login;
     }
 }
